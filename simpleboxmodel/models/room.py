@@ -24,7 +24,7 @@ class Room:
     relative_humidity: float = 0.5  # pct
     background_co2: float = 415  # ppm
     uv_index: float = 0
-        
+
     # Air Control Measures
     air_quality_measures: List[Source] = field(default_factory=list)
     viral_surface_deposition: float = 0.3  # ach
@@ -62,9 +62,10 @@ class Room:
         """Sum up total air exchanges per hour based on all AQ measures."""
         # TODO: calculate based on MERV ratings/efficiency/power/etc.
         return (
-            sum(v.calculate_ach(self.volume) for v in self.air_quality_measures) + self.outdoor_air_ventilation
+            sum(v.calculate_ach(self.volume) for v in self.air_quality_measures)
+            + self.outdoor_air_ventilation
         )
-    
+
     @property
     def viral_loss_rate(self):
         """Rate of virus loss per hour"""

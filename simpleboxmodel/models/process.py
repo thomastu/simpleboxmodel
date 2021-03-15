@@ -9,7 +9,7 @@ class Source:
     """A ventilation source (or sink.)"""
 
     name: str
-    flow_rate: float  # cu. ft. / minute
+    flow_rate: float  # cu. meter / minute
     pollutants: Dict[str, Pollutant]  # pollutant name: value
 
     def calculate_ach(self, volume):
